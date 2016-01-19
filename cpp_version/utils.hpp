@@ -15,34 +15,34 @@ cv::Mat im2col_general(cv::Mat& InImg, vector<int>& blockSize, vector<int>& step
 cv::Mat PCA_FilterBank(vector<cv::Mat>& InImg, int PatchSize, int NumFilters);
 
 typedef struct {
-    vector<cv::Mat> OutImg;
-    vector<int> OutImgIdx;
+	vector<cv::Mat> OutImg;
+	vector<int> OutImgIdx;
 } PCA_Out_Result;
 
 PCA_Out_Result* PCA_output(vector<cv::Mat>& InImg, vector<int>& InImgIdx, int PatchSize, int NumFilters, cv::Mat& Filters, int threadnum);
 
 typedef struct {
-    //SparseMat Features;
-    cv::Mat Features;
-    vector<int> feature_idx;
-    vector<cv::Mat> Filters;
-    vector<int> BlkIdx;
+	//SparseMat Features;
+	cv::Mat Features;
+	vector<int> feature_idx;
+	vector<cv::Mat> Filters;
+	vector<int> BlkIdx;
 } PCA_Train_Result;
 
 typedef struct {
-    int NumStages;
-    int PatchSize;
-    vector<int> NumFilters;
-    vector<int> HistBlockSize;
-    double BlkOverLapRatio;
+	int NumStages;
+	int PatchSize;
+	vector<int> NumFilters;
+	vector<int> HistBlockSize;
+	double BlkOverLapRatio;
 } PCANet;
 
 PCA_Train_Result* PCANet_train(vector<cv::Mat>& InImg, PCANet* PcaNet, bool is_extract_feature);
 
 typedef struct {
-    //SparseMat Features;
-    cv::Mat Features;
-    vector<int> BlkIdx;
+	//SparseMat Features;
+	cv::Mat Features;
+	vector<int> BlkIdx;
 } Hashing_Result;
 
 Hashing_Result* HashingHist(PCANet* PcaNet, vector<int>& ImgIdx, vector<cv::Mat>& Imgs);
@@ -50,8 +50,8 @@ Hashing_Result* HashingHist(PCANet* PcaNet, vector<int>& ImgIdx, vector<cv::Mat>
 cv::Mat Heaviside(cv::Mat& X);
 
 /**
- *	the range of the histogram is 0 to Range
- */
+*	the range of the histogram is 0 to Range
+*/
 cv::Mat Hist(cv::Mat& mat, int Range);
 
 cv::Mat bsxfun_times(cv::Mat& BHist, int NumFilters);
